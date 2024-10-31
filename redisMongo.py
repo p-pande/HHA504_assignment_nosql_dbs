@@ -2,6 +2,7 @@ import pandas as pd
 from pymongo import MongoClient
 import redis
 import json
+import os
 
 
 df = pd.read_csv('dataset.csv')
@@ -10,7 +11,7 @@ data = df.to_dict(orient='records')
 
 # Connect to MongoDB
 
-client = MongoClient("mongodb+srv://prabhakarpandey:pandey@prabhakar-test.haqgp.mongodb.net/")
+client = MongoClient(os.getenv("MONGO"))
 db = client ['test_db']
 collection = db['patients']
 
@@ -18,9 +19,9 @@ collection.insert_many(data)
 
 # Connect to Redis
 r = redis.StrictRedis(
-    host='redis-10870.c263.us-east-1-2.ec2.redns.redis-cloud.com',
+    host= os.getenv("REDISHOST"),
     port= 10870,
-    password='8Rud68bfY89eKwSocnB9OqzokECAoh9V',
+    password= os.getenv("REDISPASS"),
     decode_responses=True
 )
 
