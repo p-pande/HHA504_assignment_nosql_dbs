@@ -3,7 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-.csv
+dataset.csv
 .env
 
 # C extensions

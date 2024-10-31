@@ -4,8 +4,8 @@ import redis
 import json
 import os
 
-
-df = pd.read_csv('dataset.csv')
+url = 'https://raw.githubusercontent.com/hantswilliams/HHA-504-2024/refs/heads/main/other/module8/module8_nosql_hw.csv'
+df = pd.read_csv(url)
 
 data = df.to_dict(orient='records')
 
